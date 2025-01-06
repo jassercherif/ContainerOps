@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    matchLabels:
+      app: flask-back
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: flask-back
+    spec:
+      containers:
+      - name: flask-back
+        image: jassercherif/flask-back
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URL
+          valueFrom:
+            secretKeyRef:
+              name: backend-secret
+              key: mongo-url
+        securityContext:
+          runAsNonRoot: true            # Ensures the container does not run as root
+          runAsUser: 1000               # Set a non-root user ID
+          readOnlyRootFilesystem: true  # Makes the root filesystem read-only
+          allowPrivilegeEscalation: false  # Prevents privilege escalation
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+      nodePort: 30001
+  selector:
+    app: flask-back
+
+---
+'''apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-secret
+type: Opaque
+data:
+  # Ensure the MongoDB URI is Base64 encoded
+  mongo-url: bW9uZ29kYitzcnY6Ly9raGFsZWRnYXNzYXJhOm9DME1JVmwwR1ExZnJtUGtAY2x1c3RlcjAuN2hid3QubW9uZ29kYi5uZXQv'''

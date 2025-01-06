@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Nom des conteneurs et images
-REACT_CONTAINER="react-front"
-FLASK_CONTAINER="flask-back"
+REACT_CONTAINER="jassercherif/react-front:v0.0."
+FLASK_CONTAINER="jassercherif/flask-back:v0.0."
 
 
 # Supprimer les conteneurs s'ils existent
