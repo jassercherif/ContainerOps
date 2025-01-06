@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:22
 
 WORKDIR /app
 
@@ -18,5 +18,8 @@ ENV PORT=3000
 EXPOSE ${PORT}
 
 USER node
+
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 
 CMD ["npm", "start"]
