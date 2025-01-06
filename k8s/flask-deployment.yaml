@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-back
-        image: jassercherif/flask-back
+        image: jassercherif/flask-back:v0.0
         ports:
         - containerPort: 5000
         env:
@@ -52,11 +52,11 @@ spec:
     app: flask-back
 
 ---
-'''apiVersion: v1
+apiVersion: v1
 kind: Secret
 metadata:
   name: backend-secret
 type: Opaque
 data:
   # Ensure the MongoDB URI is Base64 encoded
-  mongo-url: bW9uZ29kYitzcnY6Ly9raGFsZWRnYXNzYXJhOm9DME1JVmwwR1ExZnJtUGtAY2x1c3RlcjAuN2hid3QubW9uZ29kYi5uZXQv'''
+  mongo-url: bW9uZ29kYitzcnY6Ly9qYXNzZXJjaGVyaWY6eFhvcUxLaDc2a3RzSXhIUEBjbHVzdGVyMC40bjQ3ZC5tb25nb2RiLm5ldC9teWRhdGFiYXNlP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eSZhcHBOYW1lPUNsdXN0ZXIw

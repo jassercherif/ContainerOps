@@ -1,1 +1,3 @@
 .dev\Scripts\python
+[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("mongodb+srv://jassercherif:xXoqLKh76ktsIxHP@cluster0.4n47d.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=Cluster0"))
+
