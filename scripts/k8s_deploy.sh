@@ -3,7 +3,6 @@
 # Set script to exit immediately if any command fails
 set -e
 
-# Paths to the Kubernetes configuration files
 CLIENT_PATH="./k8s"
 
 # Delete existing Kubernetes resources for the server and client
