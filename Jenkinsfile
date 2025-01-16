@@ -6,7 +6,6 @@ pipeline {
     }
  
     stages { 
-        
   
         stage('Install Backend Dependencies') {
             steps {
